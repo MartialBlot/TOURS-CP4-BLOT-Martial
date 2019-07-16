@@ -4,7 +4,7 @@ User Story:
 - 2- Je veux pouvoir consulter les informations des cirques. (GET)
 - 3- je veux pouvoir modifier les informations d'un cirque. (PUT)
 - 4- je veux pouvoir consulter un cirque par l'id. (GET)
-- 5- je veux pouvoir ajouter un cirque à la compagnie. (POST)
+- 5- je veux pouvoir ajouter un cirque à la compagnie. (POST) OKOKOKOK
 - 6- je veux pouvoir supprimer un cirque de la compagnie. (DELETE)
 - 7- je veux pouvoir envoyer un message à un cirque. (POST)
 - 8- je veux pouvoir lire les messages d'un cirque. (GET)

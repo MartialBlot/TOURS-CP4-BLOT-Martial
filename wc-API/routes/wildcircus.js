@@ -34,6 +34,27 @@ router.post('/circus', (req, res) => {
     })
 })
 
+//Send a message
+router.post('/messages', (req, res) => {
+    const formData = req.body;
+    db.query('INSERT INTO messages set ?', formData, (err, results) => {
+        if(err){
+            res.status(500).send("Erreur lors de l'envoi du message");
+            return;
+        }  
+        if(!results){
+            res.status(400).send();
+        } else {
+            db.query('SELECT * FROM messages WHERE id = ?', results.insertId, (err, results) => {
+                if(err){
+                    res.status(500).send();
+                } else {
+                    res.status(201).send(results[0]);
+                }
+            })
+        }
+    })
+})
 
 
 
