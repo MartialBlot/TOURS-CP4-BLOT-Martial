@@ -210,13 +210,5 @@ router.delete('/messages/:id', (req, res) => {
     })
 });
 
-
-
-
-
-
-
-
-
 //END ROUTE
 module.exports = router;
