@@ -54,8 +54,43 @@ router.post('/messages', (req, res) => {
             })
         }
     })
-})
+});
 
+//Get circus by id
+router.get('/circus/:id', (req, res) =>{
+    const id = req.params.id;
+    db.query('SELECT * FROM circus WHERE id = ?', id, (err, results) => {
+        if(err){
+            res.status(500).send('Erreur lors de la récupération du cirque');
+        } 
+        if (!results.length) {
+            res.status(404).send();
+        } else {
+            res.status(200).json(results);
+        }
+    })
+});
+
+//Post infos
+router.post('/infos', (req, res) => {
+    const formData = req.body;
+    db.query('INSERT INTO infos set ?', formData, (err, results) => {
+        if(err){
+            res.status(500).send('Erreur lors de la création des infos');
+            return;
+        } if (!results) {
+            res.status(400).send();
+        } else {
+            db.query('SELECT * FROM infos WHERE id = ?', results.insertId, (err, results) => {
+                if(err){
+                    res.status(500).send();
+                } else {
+                    res.status(201).send(results[0]);
+                }
+            })
+        }
+    })
+});
 
 
 
