@@ -7,7 +7,7 @@
       <p>Prix : {{info.price}}</p>
       <p>Nombre de représentation : {{info.nb_shows}}</p>
       <button class="btn btn-danger btn-sm" type="bouton" (click)="deleteInfos(info.id, i)">Supprimer</button>
-      <button class="btn btn-info btn-sm" type="bouton">Modifier</button>
+      <button class="btn btn-info btn-sm" type="bouton" [routerLink]="['/infos',info.id,'edit']">Modifier</button>
     </ng-container>
   </div>
 </div>

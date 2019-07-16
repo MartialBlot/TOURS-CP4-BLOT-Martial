@@ -28,4 +28,15 @@ export class InfosService {
       }),
     );
   }
+
+  public editInfos(id: string, infosForm: Infos): Observable<Infos> {
+    return this.http.put<Infos>(`${this.api}/infos/${id}`, infosForm);
+  }
+
+  public getOneInfos(id: number): Observable<Infos>{
+    return this.http.get(`${this.api}/infos/${id}`).pipe(
+      map((infos: any) => { return infos as Infos
+      })
+      )
+  };
 }

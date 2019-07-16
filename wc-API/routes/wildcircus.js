@@ -71,6 +71,21 @@ router.get('/circus/:id', (req, res) =>{
     })
 });
 
+//Get infos by id
+router.get('/infos/:id', (req, res) =>{
+    const id = req.params.id;
+    db.query('SELECT * FROM infos WHERE id = ?', id, (err, results) => {
+        if(err){
+            res.status(500).send('Erreur lors de la récupération de l info');
+        } 
+        if (!results.length) {
+            res.status(404).send();
+        } else {
+            res.status(200).json(results);
+        }
+    })
+});
+
 //Post infos
 router.post('/infos', (req, res) => {
     const formData = req.body;
