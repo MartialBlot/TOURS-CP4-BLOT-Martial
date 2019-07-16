@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CircusService } from '../services/circus.service';
+import { Circus } from '../models/circus.model';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public circus: Circus
+
+  constructor(
+      private service: CircusService,
+    ) { }
 
   ngOnInit() {
+    this.service.getCircus().subscribe((circus: Circus) => {
+      this.circus = circus;
+    })
   }
 
 }
