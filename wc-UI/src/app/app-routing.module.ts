@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: "circus/:id/edit", component: EditCircusComponent},
   {path: "infos/:id/edit", component: EditInfosComponent},
   {path: "circus/new", component: NewCircusComponent},
-  {path: "infos/new", component: NewInfosComponent},
+  {path: "circus/:id/infos/new", component: NewInfosComponent},
 ];
 
 @NgModule({

@@ -39,4 +39,8 @@ export class InfosService {
       })
       )
   };
+
+  public createInfos(infosForm: Infos): Observable <Infos>{
+    return this.http.post<Infos>(`${this.api}/infos`, infosForm);
+  }
 }

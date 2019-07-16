@@ -1,5 +1,4 @@
 <p>Détails</p>
-<button class="btn btn-warning" routerLink="/infos/new">Ajouter des infos</button>
 <div class="container-fluid">
   <div class="row offset-2">
     <ng-container class="col-md-4 col-sm-12" *ngFor="let info of infos; let i = index">
@@ -9,6 +8,7 @@
       <p>Nombre de représentation : {{info.nb_shows}}</p>
       <button class="btn btn-danger btn-sm" type="bouton" (click)="deleteInfos(info.id, i)">Supprimer</button>
       <button class="btn btn-info btn-sm" type="bouton" [routerLink]="['/infos',info.id,'edit']">Modifier</button>
+      <button class="btn btn-warning" [routerLink]="['/circus',info.circus_id,'infos','new']">Ajouter des infos</button>
     </ng-container>
   </div>
 </div>
