@@ -6,6 +6,7 @@ import { EditCircusComponent } from './edit-circus/edit-circus.component';
 import { EditInfosComponent } from './edit-infos/edit-infos.component';
 import { NewCircusComponent } from './new-circus/new-circus.component';
 import { NewInfosComponent } from './new-infos/new-infos.component';
+import { SendMessagesComponent } from './send-messages/send-messages.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: "infos/:id/edit", component: EditInfosComponent},
   {path: "circus/new", component: NewCircusComponent},
   {path: "circus/:id/infos/new", component: NewInfosComponent},
+  {path: "circus/:id/message/new", component: SendMessagesComponent},
 ];
 
 @NgModule({

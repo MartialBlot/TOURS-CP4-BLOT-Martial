@@ -14,6 +14,7 @@ import { EditInfosComponent } from './edit-infos/edit-infos.component';
 import { FormsModule } from '@angular/forms';
 import { NewInfosComponent } from './new-infos/new-infos.component';
 import { NewCircusComponent } from './new-circus/new-circus.component';
+import { SendMessagesComponent } from './send-messages/send-messages.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NewCircusComponent } from './new-circus/new-circus.component';
     EditCircusComponent,
     EditInfosComponent,
     NewInfosComponent,
-    NewCircusComponent
+    NewCircusComponent,
+    SendMessagesComponent
   ],
   imports: [
     BrowserModule,
