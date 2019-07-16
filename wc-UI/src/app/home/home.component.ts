@@ -9,7 +9,7 @@ import { Circus } from '../models/circus.model';
 })
 export class HomeComponent implements OnInit {
 
-  public circus: Circus
+  public circus;
 
   constructor(
       private service: CircusService,
@@ -18,6 +18,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.service.getCircus().subscribe((circus: Circus) => {
       this.circus = circus;
+    })
+  }
+
+  deleteCircus(id, index){
+    this.service.deleteCircus(id).subscribe((circus: Circus) =>{
+      this.circus.splice(index, 1);
     })
   }
 

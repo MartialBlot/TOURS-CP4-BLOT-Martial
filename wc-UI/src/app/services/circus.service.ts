@@ -21,5 +21,13 @@ export class CircusService {
       )
   };
 
+  public deleteCircus(id: number): Observable<Circus> {
+      return this.http.delete(`${this.api}/circus/${id}`).pipe(
+        map((circus: any) => {
+          return  circus as Circus;
+        }),
+      );
+    }
+
 
 }
