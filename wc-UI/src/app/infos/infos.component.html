@@ -9,5 +9,14 @@
       <button class="btn btn-danger btn-sm" type="bouton" (click)="deleteInfos(info.id, i)">Supprimer</button>
       <button class="btn btn-info btn-sm" type="bouton" [routerLink]="['/infos',info.id,'edit']">Modifier</button>
     </ng-container>
+    <button class="btn btn-primary" type="bouton" (click)="showMessages()">Voir les messages</button>
+    <div [hidden]="openMailer">
+    <ng-container  class="col-md-4 col-sm-12" *ngFor="let message of messages; let i = index">
+        <p>Message de : {{message.from}}</p>
+        <p>Objet : {{message.object}}</p>
+        <p>Message : {{message.body}}</p>
+        <button class="btn btn-danger btn-sm" type="bouton" (click)="deleteMessage(message.id, i)">Supprimer</button>
+      </ng-container>
+    </div>
   </div>
 </div>
