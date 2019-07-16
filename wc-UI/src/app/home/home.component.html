@@ -10,6 +10,7 @@
           <button class="btn btn-warning btn-sm" type="bouton" [routerLink]="['circus',circus.id,'infos']">Détails</button>
           <button class="btn btn-danger btn-sm" type="bouton" (click)="deleteCircus(circus.id, i)">Supprimer</button>
           <button class="btn btn-info btn-sm" type="bouton" [routerLink]="['circus',circus.id,'edit']">Modifier</button>
+          <button class="btn btn-warning" [routerLink]="['/circus',circus.id,'infos','new']">Ajouter des infos</button>
         </div>
       </div>
     </ng-container>
