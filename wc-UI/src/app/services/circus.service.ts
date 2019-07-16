@@ -29,5 +29,16 @@ export class CircusService {
       );
     }
 
+  public editCircus(id: string, circusForm: Circus): Observable<Circus> {
+    return this.http.put<Circus>(`${this.api}/circus/${id}`, circusForm);
+  }
+
+  public getOneCircus(id: number): Observable<Circus>{
+    return this.http.get(`${this.api}/circus/${id}`).pipe(
+      map((circus: any) => { return circus as Circus
+      })
+      )
+  };
+
 
 }

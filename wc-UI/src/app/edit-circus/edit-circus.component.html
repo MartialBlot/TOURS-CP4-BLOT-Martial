@@ -1,0 +1,24 @@
+<h1>Modification des données du Cirque {{circus.name}}</h1>
+        <form class="offset-1 offset-md-2" (ngSubmit)="editCircus(circus.id, newCircus)" #newCircus="ngForm">
+          <div class="row mb-5">
+            <p class="col-5 text-color">Nom :</p>
+            <input class="col" type='text' placeholder="nom" name="name" #name="ngModel" [(ngModel)]="circus.name" [ngModel]>
+          </div>
+          <div class="row mb-5">
+            <p class="col-5 text-color">Pays :</p>
+            <input class="col" type='text' placeholder="pays" name="nationality" #nationality="ngModel" [(ngModel)]="circus.nationality" [ngModel]>
+          </div>
+          <div class="row mb-5">
+            <p class="col-5 text-color">Nombre d'artiste(s) :</p>
+            <input class="col" type='number' placeholder="nombre d'artiste" name="nb_artist" #nb_artist="ngModel" [(ngModel)]="circus.nb_artist" [ngModel]>
+          </div>
+          <div class="row mb-5">
+            <p class="col-5 text-color">Année de création :</p>
+            <input class="col" type='number' placeholder="année de création" name="year_creation" #year_creation="ngModel" [(ngModel)]="circus.year_creation" [ngModel]>
+          </div>
+          <div class="row mb-5">
+              <p class="col-5 text-color">Lien image du cirque :</p>
+              <input class="col" type='text' placeholder="image .. jpg.. png" name="circus_picture" #circus_picture="ngModel" [(ngModel)]="circus.circus_picture" [ngModel]>
+            </div>
+          <button class='btn btn-success mr-5 mt-3 mb-3' type="submit">Enregistrer les modifications</button>
+        </form>

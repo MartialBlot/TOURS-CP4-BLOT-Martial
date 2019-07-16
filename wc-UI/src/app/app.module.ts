@@ -9,12 +9,17 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientModule } from '@angular/common/http';
 import { InfosComponent } from './infos/infos.component';
+import { EditCircusComponent } from './edit-circus/edit-circus.component';
+import { EditInfosComponent } from './edit-infos/edit-infos.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    InfosComponent
+    InfosComponent,
+    EditCircusComponent,
+    EditInfosComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +29,7 @@ import { InfosComponent } from './infos/infos.component';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
