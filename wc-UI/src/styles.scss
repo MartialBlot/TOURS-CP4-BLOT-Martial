@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+  height: 100%;
+  background-image: url("assets/images/back.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 640px) {
+  body {
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  html {
+    height: 100%;
+  }
+}
