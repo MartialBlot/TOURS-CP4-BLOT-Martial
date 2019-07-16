@@ -97,7 +97,7 @@ router.get('/circus/:id/messages', (req, res) =>{
     const id = req.params.id;
     db.query('SELECT * FROM messages WHERE circus_id = ?', id, (err, results) => {
         if(err){
-            res.status(500).send('Erreur lors de la récupération de la playlist');
+            res.status(500).send('Erreur lors de la récupération du message');
         } 
         if (!results.length) {
             res.status(404).send();
@@ -107,6 +107,69 @@ router.get('/circus/:id/messages', (req, res) =>{
     })
 });
 
+//Read infos by circus id
+router.get('/circus/:id/infos', (req, res) =>{
+    const id = req.params.id;
+    db.query('SELECT * FROM infos WHERE circus_id = ?', id, (err, results) => {
+        if(err){
+            res.status(500).send('Erreur lors de la récupération des infos');
+        } 
+        if (!results.length) {
+            res.status(404).send();
+        } else {
+            res.status(200).json(results);
+        }
+    })
+});
+
+//Show all circus
+router.get('/circus' , (req, res) => {
+    db.query('SELECT * FROM circus', (err, results) => {
+        if(err){
+            res.status(500).send('Erreur lors de la récupération des cirques');
+        } else {
+            res.status(200).json(results);
+        }
+    })
+});
+
+//Edit circus
+router.put('/circus/:id', (req, res) => {
+    const id = req.params.id;
+    const formData = req.body;
+    db.query('UPDATE circus SET ? WHERE id = ?', [formData, id], err => {
+        if (err) {
+            res.status(500).send("Erreur lors de la modification du cirque");
+        } else {
+        db.query('SELECT * FROM circus WHERE id = ?', id, (err, results) => {
+            if (err) {
+                res.status(500).send();
+            } else {
+            res.status(200).send(results[0]);
+                }
+            })
+        }
+    });
+});
+
+//Edit infos circus
+router.put('/infos/:id', (req, res) => {
+    const id = req.params.id;
+    const formData = req.body;
+    db.query('UPDATE infos SET ? WHERE id = ?', [formData, id], err => {
+        if (err) {
+            res.status(500).send("Erreur lors de la modification des infos");
+        } else {
+        db.query('SELECT * FROM infos WHERE id = ?', id, (err, results) => {
+            if (err) {
+                res.status(500).send();
+            } else {
+            res.status(200).send(results[0]);
+                }
+            })
+        }
+    });
+});
 
 
 
