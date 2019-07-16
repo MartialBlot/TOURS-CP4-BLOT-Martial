@@ -40,5 +40,9 @@ export class CircusService {
       )
   };
 
+  public createCircus(circusForm: Circus): Observable <Circus>{
+    return this.http.post<Circus>(`${this.api}/circus`, circusForm);
+  }
+
 
 }
