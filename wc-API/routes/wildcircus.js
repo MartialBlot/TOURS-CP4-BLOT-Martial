@@ -92,6 +92,21 @@ router.post('/infos', (req, res) => {
     })
 });
 
+//Read message by circus id
+router.get('/circus/:id/messages', (req, res) =>{
+    const id = req.params.id;
+    db.query('SELECT * FROM messages WHERE circus_id = ?', id, (err, results) => {
+        if(err){
+            res.status(500).send('Erreur lors de la récupération de la playlist');
+        } 
+        if (!results.length) {
+            res.status(404).send();
+        } else {
+            res.status(200).json(results);
+        }
+    })
+});
+
 
 
 

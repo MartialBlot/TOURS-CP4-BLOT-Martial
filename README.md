@@ -7,8 +7,8 @@ User Story:
 - 5- je veux pouvoir ajouter un cirque à la compagnie. (POST) OKOKOKOK
 - 6- je veux pouvoir supprimer un cirque de la compagnie. (DELETE)
 - 7- je veux pouvoir envoyer un message à un cirque. (POST) OKOKOKOK
-- 8- je veux pouvoir lire les messages d'un cirque. (GET)
-
+- 8- je veux pouvoir lire les messages d'un cirque. (GET)OKOKOKOK
+- 9- Ajouter infos aux cirques OKOKOK
 
 Data base:
 
