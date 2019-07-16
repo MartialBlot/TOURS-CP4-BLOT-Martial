@@ -6,7 +6,7 @@
         <div class="card-body">
           <h5 class="card-title">Cirque: {{circus.name}}</h5>
           <p class="card-text">Nationalité : {{circus.nationality}}</p>
-          <button class="btn btn-warning btn-sm" type="bouton" >Détails</button>
+          <button class="btn btn-warning btn-sm" type="bouton" [routerLink]="['circus',circus.id,'infos']">Détails</button>
           <button class="btn btn-danger btn-sm" type="bouton" >Supprimer</button>
           <button class="btn btn-info btn-sm" type="bouton">Modifier</button>
         </div>
