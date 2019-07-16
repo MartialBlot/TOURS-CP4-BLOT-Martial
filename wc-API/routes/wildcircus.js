@@ -171,6 +171,45 @@ router.put('/infos/:id', (req, res) => {
     });
 });
 
+//Delete circus
+router.delete('/circus/:id', (req, res) => {
+    const id = req.params.id;
+    db.query('DELETE FROM circus WHERE id = ?', id, err => {
+        if(err){
+            console.log(err)
+            res.status(500).send('Erreur lors de la suppression');
+        } else {
+            res.status(204).send();
+        }
+    })
+});
+
+//Delete infos
+router.delete('/infos/:id', (req, res) => {
+    const id = req.params.id;
+    db.query('DELETE FROM infos WHERE id = ?', id, err => {
+        if(err){
+            console.log(err)
+            res.status(500).send('Erreur lors de la suppression');
+        } else {
+            res.status(204).send();
+        }
+    })
+});
+
+//Delete message
+router.delete('/messages/:id', (req, res) => {
+    const id = req.params.id;
+    db.query('DELETE FROM messages WHERE id = ?', id, err => {
+        if(err){
+            console.log(err)
+            res.status(500).send('Erreur lors de la suppression');
+        } else {
+            res.status(204).send();
+        }
+    })
+});
+
 
 
 
