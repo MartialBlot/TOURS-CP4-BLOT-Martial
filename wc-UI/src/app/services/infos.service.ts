@@ -20,4 +20,12 @@ export class InfosService {
       })
       )
   };
+
+  public deleteInfos(id: number): Observable<Infos> {
+    return this.http.delete(`${this.api}/infos/${id}`).pipe(
+      map((infos: any) => {
+        return  infos as Infos;
+      }),
+    );
+  }
 }

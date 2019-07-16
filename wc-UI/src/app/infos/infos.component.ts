@@ -11,7 +11,7 @@ import { Infos } from '../models/infos.model';
 export class InfosComponent implements OnInit {
 
   public id: number;
-  public infos: Infos;
+  public infos;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +24,12 @@ export class InfosComponent implements OnInit {
     })
     this.service.getInfos(this.id).subscribe((infos: Infos) =>{
       this.infos = infos;
+    })
+  }
+
+  deleteInfos(id, index){
+    this.service.deleteInfos(id).subscribe((infos: Infos) => {
+      this.infos.splice(index, 1)
     })
   }
 }
