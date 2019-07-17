@@ -3,11 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { InfosService } from '../services/infos.service';
 import { Infos } from '../models/infos.model';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-edit-infos',
   templateUrl: './edit-infos.component.html',
-  styleUrls: ['./edit-infos.component.scss']
+  styleUrls: ['./edit-infos.component.scss'],
+  providers: [DatePipe,],
 })
 export class EditInfosComponent implements OnInit {
 
@@ -18,7 +20,8 @@ export class EditInfosComponent implements OnInit {
     private route: ActivatedRoute,
     private infoService: InfosService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit() {
@@ -26,6 +29,7 @@ export class EditInfosComponent implements OnInit {
       this.id = params['id'];
       this.infoService.getOneInfos(this.id).subscribe((infos: Infos) => {
         this.infos = infos[0];
+        this.infos.date = this.datePipe.transform(this.infos.date, 'yyyy-MM-dd');
       })
     })
   }

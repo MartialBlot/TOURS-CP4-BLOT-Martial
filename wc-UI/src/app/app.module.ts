@@ -18,6 +18,7 @@ import { SendMessagesComponent } from './send-messages/send-messages.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     EditInfosComponent,
     NewInfosComponent,
     NewCircusComponent,
-    SendMessagesComponent
+    SendMessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +44,7 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 2500,
       positionClass: 'toast-top-right',
       preventDuplicates: false,
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
