@@ -1,21 +1,23 @@
-<h1>Création d'infos</h1>
+<h1 class="title">Création d'infos</h1>
         <form class="offset-1 offset-md-2" (ngSubmit)="newInfos(infos)" #infos="ngForm">
+
           <div class="row mb-5">
             <p class="col-5 text-color">Ville :</p>
-            <input class="col" type='text' placeholder="Ville" name="city" #city="ngModel" [ngModel]>
+            <input class="col-6" type='text' placeholder="Ville" name="city" #city="ngModel" [ngModel]>
           </div>
           <input [hidden]="true" class="col" type='numer' name="circus_id" #circus_id="ngModel" [(ngModel)]="id" [ngModel]>
           <div class="row mb-5">
             <p class="col-5 text-color">Date :</p>
-            <input class="col" type='date' placeholder="Date" name="date" #date="ngModel" [ngModel]>
+            <input class="col-6" type='date' placeholder="Date" name="date" #date="ngModel" [ngModel]>
           </div>
           <div class="row mb-5">
             <p class="col-5 text-color">Prix :</p>
-            <input class="col" type='number' placeholder="nombre d'artiste" name="price" #price="ngModel" [ngModel]>
+            <input class="col-6" type='number' placeholder="nombre d'artiste" name="price" #price="ngModel" [ngModel]>
           </div>
           <div class="row mb-5">
             <p class="col-5 text-color">Nombre de représentation :</p>
-            <input class="col" type='number' placeholder="Nombre de représentation" name="nb_shows" #nb_shows="ngModel" [ngModel]>
+            <input class="col-6" type='number' placeholder="Nombre de représentation" name="nb_shows" #nb_shows="ngModel" [ngModel]>
           </div>
-          <button class='btn btn-success mr-5 mt-3 mb-3' type="submit">Enregistrer les nouvelles infos</button>
+          <button class='btn btn-success mr-5 mt-3 mb-3 register-btn' type="submit">Enregistrer les nouvelles infos</button>
+
         </form>
