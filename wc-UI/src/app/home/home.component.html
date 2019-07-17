@@ -1,17 +1,20 @@
-<h1>Wild Circus</h1>
+<h1 class="title">Wild Circus</h1>
+<div class="add-circus">
 <button class="btn btn-warning" routerLink="/circus/new">Ajouter un cirque</button>
+</div>
 <div class="container-fluid">
-  <div class="row offset-2">
+  <div class="row offset-1 circus-bloc">
     <ng-container class="col-md-4 col-sm-12" *ngFor="let circus of circus; let i = index">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">Cirque: {{circus.name}}</h5>
-          <p class="card-text">Nationalité : {{circus.nationality}}</p>
-          <button class="btn btn-warning btn-sm" type="bouton" [routerLink]="['circus',circus.id,'infos']">Détails</button>
-          <button class="btn btn-danger btn-sm" type="bouton" (click)="deleteCircus(circus.id, i)">Supprimer</button>
-          <button class="btn btn-info btn-sm" type="bouton" [routerLink]="['circus',circus.id,'edit']">Modifier</button>
-          <button class="btn btn-warning" [routerLink]="['/circus',circus.id,'infos','new']">Ajouter des infos</button>
-          <button class="btn btn-warning" [routerLink]="['/circus',circus.id,'message','new']">Envoyer un message</button>
+            <img class="card-img-top" src="{{circus.circus_picture}}" alt="Card image cap">
+          <h5 class="card-title text-style">Cirque : {{circus.name}}</h5>
+          <p class="card-text text-style">Nationalité : {{circus.nationality}}</p>
+          <button class="btn btn-warning btnJump" type="bouton" [routerLink]="['circus',circus.id,'infos']">Détails</button>
+          <button class="btn btn-warning btnJump" [routerLink]="['/circus',circus.id,'infos','new']">Ajouter des infos</button>
+          <button class="btn btn-warning send" [routerLink]="['/circus',circus.id,'message','new']">Envoyer un message</button>
+          <button class="btn btn-danger btn-sm btnJump" type="bouton" (click)="deleteCircus(circus.id, i)">Supprimer</button>
+          <button class="btn btn-info btn-sm btnJump" type="bouton" [routerLink]="['circus',circus.id,'edit']">Modifier</button>
         </div>
       </div>
     </ng-container>

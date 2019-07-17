@@ -1,3 +1,53 @@
 .card{
   margin:30px;
 }
+
+.circus-bloc{
+  margin-top:80px;
+  margin-bottom: 20px;
+}
+.card-body{
+  background-image: url("../../assets/images/wp.jpg");
+  background-size: cover;
+  background-position: top left;
+}
+
+img{
+  margin-bottom:10px;
+}
+
+.text-style{
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+  text-shadow: 10px 10px 6px  black;
+}
+
+.title{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: beige;
+  font-size: 65px;
+  text-shadow: 10px 10px 10px  black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.add-circus{
+  margin-left: 5%;
+}
+
+.btn{
+  margin:2%;
+  border-color: black;
+	box-shadow: none;
+}
+
+.btnJump:hover{
+  margin-top: -2px;
+}
+
+.send:hover{
+  margin-left: 3%
+}
