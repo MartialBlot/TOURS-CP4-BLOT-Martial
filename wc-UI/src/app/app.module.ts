@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { NewInfosComponent } from './new-infos/new-infos.component';
 import { NewCircusComponent } from './new-circus/new-circus.component';
 import { SendMessagesComponent } from './send-messages/send-messages.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,12 @@ import { SendMessagesComponent } from './send-messages/send-messages.component';
     ModalModule.forRoot(),
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 2500,
+      positionClass: 'toast-top-right',
+      preventDuplicates: false,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

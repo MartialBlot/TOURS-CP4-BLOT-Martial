@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CircusService } from '../services/circus.service';
 import { Circus } from '../models/circus.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
       private service: CircusService,
+      private toastr: ToastrService,
     ) { }
 
   ngOnInit() {
@@ -25,7 +27,10 @@ export class HomeComponent implements OnInit {
     if(confirm('Voulez vous vraiment supprimer ?')){
     this.service.deleteCircus(id).subscribe((circus: Circus) =>{
       this.circus.splice(index, 1);
+      this.toastr.success('Cirque supprimés')
     })
+    } else {
+      this.toastr.warning('Suppression avortée')
     }
   }
 

@@ -4,7 +4,7 @@ import { InfosService } from '../services/infos.service';
 import { Infos } from '../models/infos.model';
 import { MessagesService } from '../services/messages.service';
 import { Messages } from '../models/messages.model';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-infos',
   templateUrl: './infos.component.html',
@@ -21,6 +21,7 @@ export class InfosComponent implements OnInit {
     private route: ActivatedRoute,
     private service: InfosService,
     private messageService: MessagesService,
+    private toastr: ToastrService,
     ) { }
 
   ngOnInit() {
@@ -39,7 +40,10 @@ export class InfosComponent implements OnInit {
     if(confirm('Voulez vous vraiment supprimer ?')){
     this.service.deleteInfos(id).subscribe((infos: Infos) => {
       this.infos.splice(index, 1)
+      this.toastr.success('Infos supprimées')
     })
+    } else {
+      this.toastr.warning('Suppression avortée')
     }
   }
 
@@ -51,7 +55,10 @@ export class InfosComponent implements OnInit {
     if(confirm('Voulez vous vraiment supprimer ?')){
     this.messageService.deleteMessage(id).subscribe((message: Messages) =>{
       this.messages.splice(index, 1);
+      this.toastr.success('Message supprimé')
     })
+    } else{
+      this.toastr.warning('Suppression avortée')
     }
   }
 }

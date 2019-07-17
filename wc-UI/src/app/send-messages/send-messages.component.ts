@@ -3,6 +3,7 @@ import { InfosService } from '../services/infos.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessagesService } from '../services/messages.service';
 import { Messages } from '../models/messages.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-send-messages',
@@ -17,6 +18,7 @@ export class SendMessagesComponent implements OnInit {
     private service: MessagesService,
     private router: Router,
     private route: ActivatedRoute,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,7 @@ export class SendMessagesComponent implements OnInit {
   newMessage(message){
     this.service.sendMessage(message.value).subscribe((message: Messages) => {
       this.router.navigateByUrl("");
+      this.toastr.success('Message envoyé')
     })
   }
 

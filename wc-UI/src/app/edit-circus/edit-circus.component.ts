@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { Circus } from '../models/circus.model';
 import { CircusService } from '../services/circus.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-circus',
@@ -17,6 +18,7 @@ export class EditCircusComponent implements OnInit {
     private route: ActivatedRoute,
     private service: CircusService,
     private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class EditCircusComponent implements OnInit {
   editCircus(id, circus){
     this.service.editCircus(id, circus.value).subscribe((circus: Circus) => {
       this.router.navigateByUrl("");
+      this.toastr.success('Cirque modifiées');
     })
   }
 

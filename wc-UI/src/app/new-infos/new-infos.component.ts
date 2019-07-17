@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InfosService } from '../services/infos.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Infos } from '../models/infos.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-infos',
@@ -16,6 +17,7 @@ export class NewInfosComponent implements OnInit {
     private service: InfosService,
     private router: Router,
     private route: ActivatedRoute,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class NewInfosComponent implements OnInit {
 
   newInfos(infos){
     this.service.createInfos(infos.value).subscribe((infos: Infos) => {
+      this.toastr.success("Les nouvelles infos ont été ajoutée")
       this.router.navigateByUrl("");
     })
   }

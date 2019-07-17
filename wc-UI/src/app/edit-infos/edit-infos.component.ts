@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfosService } from '../services/infos.service';
 import { Infos } from '../models/infos.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-infos',
@@ -17,6 +18,7 @@ export class EditInfosComponent implements OnInit {
     private route: ActivatedRoute,
     private infoService: InfosService,
     private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class EditInfosComponent implements OnInit {
   editInfos(id, infos){
     this.infoService.editInfos(id, infos.value).subscribe((infos: Infos) => {
       this.router.navigateByUrl("");
+      this.toastr.success('Infos du cirque modifiées');
     })
   }
 
