@@ -36,9 +36,11 @@ export class InfosComponent implements OnInit {
   }
 
   deleteInfos(id, index){
+    if(confirm('Voulez vous vraiment supprimer ?')){
     this.service.deleteInfos(id).subscribe((infos: Infos) => {
       this.infos.splice(index, 1)
     })
+    }
   }
 
   showMessages(){
@@ -46,8 +48,10 @@ export class InfosComponent implements OnInit {
   }
 
   deleteMessage(id, index){
+    if(confirm('Voulez vous vraiment supprimer ?')){
     this.messageService.deleteMessage(id).subscribe((message: Messages) =>{
       this.messages.splice(index, 1);
     })
+    }
   }
 }

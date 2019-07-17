@@ -22,9 +22,11 @@ export class HomeComponent implements OnInit {
   }
 
   deleteCircus(id, index){
+    if(confirm('Voulez vous vraiment supprimer ?')){
     this.service.deleteCircus(id).subscribe((circus: Circus) =>{
       this.circus.splice(index, 1);
     })
+    }
   }
 
 }
