@@ -17,17 +17,17 @@ router.post('/circus', (req, res) => {
     const formData = req.body;
     db.query('INSERT INTO circus set ?', formData, (err, results) => {
         if(err){
-            res.status(500).send('Erreur pendant la création du cirque');
+            res.status(500).json('Erreur pendant la création du cirque');
             return;
         }  
         if(!results){
-            res.status(400).send();
+            res.status(400).json();
         } else {
             db.query('SELECT * FROM circus WHERE id = ?', results.insertId, (err, results) => {
                 if(err){
-                    res.status(500).send();
+                    res.status(500).json();
                 } else {
-                    res.status(201).send(results[0]);
+                    res.status(201).json(results[0]);
                 }
             })
         }
@@ -39,17 +39,17 @@ router.post('/messages', (req, res) => {
     const formData = req.body;
     db.query('INSERT INTO messages set ?', formData, (err, results) => {
         if(err){console.log(err)
-            res.status(500).send("Erreur lors de l'envoi du message");
+            res.status(500).json("Erreur lors de l'envoi du message");
             return;
         }  
         if(!results){
-            res.status(400).send();
+            res.status(400).json();
         } else {
             db.query('SELECT * FROM messages WHERE id = ?', results.insertId, (err, results) => {
                 if(err){
-                    res.status(500).send();
+                    res.status(500).json();
                 } else {
-                    res.status(201).send(results[0]);
+                    res.status(201).json(results[0]);
                 }
             })
         }
@@ -61,10 +61,10 @@ router.get('/circus/:id', (req, res) =>{
     const id = req.params.id;
     db.query('SELECT * FROM circus WHERE id = ?', id, (err, results) => {
         if(err){
-            res.status(500).send('Erreur lors de la récupération du cirque');
+            res.status(500).json('Erreur lors de la récupération du cirque');
         } 
         if (!results.length) {
-            res.status(404).send();
+            res.status(404).json();
         } else {
             res.status(200).json(results);
         }
@@ -76,10 +76,10 @@ router.get('/infos/:id', (req, res) =>{
     const id = req.params.id;
     db.query('SELECT * FROM infos WHERE id = ?', id, (err, results) => {
         if(err){
-            res.status(500).send('Erreur lors de la récupération de l info');
+            res.status(500).json('Erreur lors de la récupération de l info');
         } 
         if (!results.length) {
-            res.status(404).send();
+            res.status(404).json();
         } else {
             res.status(200).json(results);
         }
@@ -91,16 +91,16 @@ router.post('/infos', (req, res) => {
     const formData = req.body;
     db.query('INSERT INTO infos set ?', formData, (err, results) => {
         if(err){
-            res.status(500).send('Erreur lors de la création des infos');
+            res.status(500).json('Erreur lors de la création des infos');
             return;
         } if (!results) {
-            res.status(400).send();
+            res.status(400).json();
         } else {
             db.query('SELECT * FROM infos WHERE id = ?', results.insertId, (err, results) => {
                 if(err){
-                    res.status(500).send();
+                    res.status(500).json();
                 } else {
-                    res.status(201).send(results[0]);
+                    res.status(201).json(results[0]);
                 }
             })
         }
@@ -112,10 +112,10 @@ router.get('/circus/:id/messages', (req, res) =>{
     const id = req.params.id;
     db.query('SELECT * FROM messages WHERE circus_id = ?', id, (err, results) => {
         if(err){
-            res.status(500).send('Erreur lors de la récupération du message');
+            res.status(500).json('Erreur lors de la récupération du message');
         } 
         if (!results.length) {
-            res.status(404).send();
+            res.status(404).json();
         } else {
             res.status(200).json(results);
         }
@@ -127,10 +127,10 @@ router.get('/circus/:id/infos', (req, res) =>{
     const id = req.params.id;
     db.query('SELECT * FROM infos WHERE circus_id = ?', id, (err, results) => {
         if(err){
-            res.status(500).send('Erreur lors de la récupération des infos');
+            res.status(500).json('Erreur lors de la récupération des infos');
         } 
         if (!results.length) {
-            res.status(404).send();
+            res.status(404).json();
         } else {
             res.status(200).json(results);
         }
@@ -141,7 +141,7 @@ router.get('/circus/:id/infos', (req, res) =>{
 router.get('/circus' , (req, res) => {
     db.query('SELECT * FROM circus', (err, results) => {
         if(err){
-            res.status(500).send('Erreur lors de la récupération des cirques');
+            res.status(500).json('Erreur lors de la récupération des cirques');
         } else {
             res.status(200).json(results);
         }
@@ -154,13 +154,13 @@ router.put('/circus/:id', (req, res) => {
     const formData = req.body;
     db.query('UPDATE circus SET ? WHERE id = ?', [formData, id], err => {
         if (err) {
-            res.status(500).send("Erreur lors de la modification du cirque");
+            res.status(500).json("Erreur lors de la modification du cirque");
         } else {
         db.query('SELECT * FROM circus WHERE id = ?', id, (err, results) => {
             if (err) {
-                res.status(500).send();
+                res.status(500).json();
             } else {
-            res.status(200).send(results[0]);
+            res.status(200).json(results[0]);
                 }
             })
         }
@@ -173,13 +173,13 @@ router.put('/infos/:id', (req, res) => {
     const formData = req.body;
     db.query('UPDATE infos SET ? WHERE id = ?', [formData, id], err => {
         if (err) {
-            res.status(500).send("Erreur lors de la modification des infos");
+            res.status(500).json("Erreur lors de la modification des infos");
         } else {
         db.query('SELECT * FROM infos WHERE id = ?', id, (err, results) => {
             if (err) {
-                res.status(500).send();
+                res.status(500).json();
             } else {
-            res.status(200).send(results[0]);
+            res.status(200).json(results[0]);
                 }
             })
         }
@@ -192,9 +192,9 @@ router.delete('/circus/:id', (req, res) => {
     db.query('DELETE FROM circus WHERE id = ?', id, err => {
         if(err){
             console.log(err)
-            res.status(500).send('Erreur lors de la suppression');
+            res.status(500).json('Erreur lors de la suppression');
         } else {
-            res.status(204).send();
+            res.status(204).json();
         }
     })
 });
@@ -205,9 +205,9 @@ router.delete('/infos/:id', (req, res) => {
     db.query('DELETE FROM infos WHERE id = ?', id, err => {
         if(err){
             console.log(err)
-            res.status(500).send('Erreur lors de la suppression');
+            res.status(500).json('Erreur lors de la suppression');
         } else {
-            res.status(204).send();
+            res.status(204).json();
         }
     })
 });
@@ -218,9 +218,9 @@ router.delete('/messages/:id', (req, res) => {
     db.query('DELETE FROM messages WHERE id = ?', id, err => {
         if(err){
             console.log(err)
-            res.status(500).send('Erreur lors de la suppression');
+            res.status(500).json('Erreur lors de la suppression');
         } else {
-            res.status(204).send();
+            res.status(204).json();
         }
     })
 });
