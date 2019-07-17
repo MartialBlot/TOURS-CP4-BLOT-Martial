@@ -9,7 +9,7 @@ User Story:
 - 7- je veux pouvoir envoyer un message à un cirque. (POST) OKOKOKOK
 - 8- je veux pouvoir lire les messages d'un cirque. (GET)OKOKOKOK
 - 9- Ajouter infos aux cirques OKOKOK
-- 10- je veux pouvoir supprimer un message. (DELETE)
+- 10- je veux pouvoir supprimer un message. (DELETE)OKOKOKOK
 
 Data base:
 
