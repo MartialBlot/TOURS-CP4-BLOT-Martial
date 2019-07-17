@@ -30,7 +30,9 @@ export class NewInfosComponent implements OnInit {
     this.service.createInfos(infos.value).subscribe((infos: Infos) => {
       this.toastr.success("Les nouvelles infos ont été ajoutée")
       this.router.navigateByUrl("");
-    })
+    }, (err) => {
+      this.toastr.error("Problème lors de l'ajout des nouvelles infos");
+    });
   }
 
 }

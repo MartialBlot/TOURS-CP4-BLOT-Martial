@@ -24,7 +24,9 @@ export class NewCircusComponent implements OnInit {
     this.service.createCircus(newCircus.value).subscribe((circus: Circus) => {
       this.router.navigateByUrl("");
       this.toastr.success('Nouveau cirque ajouté')
-    })
+    }, (err) => {
+      this.toastr.error("Problème lors de l'ajout du nouveau cirque");
+    });
   }
 
 }

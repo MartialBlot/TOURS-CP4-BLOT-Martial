@@ -38,7 +38,9 @@ export class EditInfosComponent implements OnInit {
     this.infoService.editInfos(id, infos.value).subscribe((infos: Infos) => {
       this.router.navigateByUrl("");
       this.toastr.success('Infos du cirque modifiées');
-    })
+    }, (err) => {
+      this.toastr.error("Problème lors de la modification infos");
+    });
   }
 
 }

@@ -35,7 +35,9 @@ export class EditCircusComponent implements OnInit {
     this.service.editCircus(id, circus.value).subscribe((circus: Circus) => {
       this.router.navigateByUrl("");
       this.toastr.success('Cirque modifiées');
-    })
+    }, (err) => {
+      this.toastr.error("Problème lors de la modification des données du cirque");
+    });
   }
 
 }

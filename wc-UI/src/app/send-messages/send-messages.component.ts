@@ -30,8 +30,10 @@ export class SendMessagesComponent implements OnInit {
   newMessage(message){
     this.service.sendMessage(message.value).subscribe((message: Messages) => {
       this.router.navigateByUrl("");
-      this.toastr.success('Message envoyé')
-    })
+      this.toastr.success('Message envoyé');
+    }, (err)=> {
+      this.toastr.error("Problème lors de l'envoi du message");
+    });
   }
 
 }
