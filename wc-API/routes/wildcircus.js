@@ -38,7 +38,7 @@ router.post('/circus', (req, res) => {
 router.post('/messages', (req, res) => {
     const formData = req.body;
     db.query('INSERT INTO messages set ?', formData, (err, results) => {
-        if(err){
+        if(err){console.log(err)
             res.status(500).send("Erreur lors de l'envoi du message");
             return;
         }  

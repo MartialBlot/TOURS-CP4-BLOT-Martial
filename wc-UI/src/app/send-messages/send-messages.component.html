@@ -1,17 +1,18 @@
-<h1>Nouveau message</h1>
+<button class="btn btn-warning ml-5 mt-5" routerLink=""> ⇦ Accueil</button>
+<h1 class="title">Nouveau message</h1>
         <form class="offset-1 offset-md-2" (ngSubmit)="newMessage(message)" #message="ngForm">
           <div class="row mb-5">
             <p class="col-5 text-color">votre addresse :</p>
-            <input class="col" type='text' placeholder="Email" name="from" #from="ngModel" [ngModel]>
+            <input class="col-6" type='text' placeholder="Email" name="from" #from="ngModel" [ngModel]>
           </div>
           <input [hidden]="true" class="col" type='numer' name="circus_id" #circus_id="ngModel" [(ngModel)]="id" [ngModel]>
           <div class="row mb-5">
             <p class="col-5 text-color">Objet :</p>
-            <input class="col" type='text' placeholder="Objet" name="object" #object="ngModel" [ngModel]>
+            <input class="col-6" type='text' placeholder="Objet" name="object" #object="ngModel" [ngModel]>
           </div>
           <div class="row mb-5">
             <p class="col-5 text-color">Votre message :</p>
-            <input class="col" type='text' placeholder="Tapez ici" name="body" #body="ngModel" [ngModel]>
+            <input class="col-6 body" type='text' placeholder="Tapez ici" name="body" #body="ngModel" [ngModel]>
           </div>
-          <button class='btn btn-success mr-5 mt-3 mb-3' type="submit">Envoyer</button>
+          <button class='btn btn-success mr-5 mt-1 mb-4 send' type="submit">Envoyer</button>
         </form>
