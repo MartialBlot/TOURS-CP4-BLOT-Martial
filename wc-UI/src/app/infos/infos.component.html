@@ -1,22 +1,44 @@
-<p>Détails</p>
-<div class="container-fluid">
-  <div class="row offset-2">
-    <ng-container class="col-md-4 col-sm-12" *ngFor="let info of infos; let i = index">
-      <p>Ville : {{info.city}}</p>
-      <p>Date : {{info.date}}</p>
-      <p>Prix : {{info.price}}</p>
-      <p>Nombre de représentation : {{info.nb_shows}}</p>
-      <button class="btn btn-danger btn-sm" type="bouton" (click)="deleteInfos(info.id, i)">Supprimer</button>
-      <button class="btn btn-info btn-sm" type="bouton" [routerLink]="['/infos',info.id,'edit']">Modifier</button>
+<p class="title">Détails</p>
+<div class="container">
+  <div class="row">
+    <ng-container class="col-md-4 col-sm-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ville</th>
+              <th scope="col">Date</th>
+              <th scope="col">Prix</th>
+              <th scope="col">Nb representations</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let info of infos; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ info.city }}</td>
+              <td>{{ info.date | date }}</td>
+              <td>{{ info.price }}</td>
+              <td>{{info.nb_shows}}</td>
+              <td> <button class="btn btn-danger btn-sm mr-3" type="bouton" (click)="deleteInfos(info.id, i)">Supprimer</button>
+                <button class="btn btn-info btn-sm" type="bouton" [routerLink]="['/infos',info.id,'edit']">Modifier</button></td>
+            </tr>
+            </tbody>
+          </table>
     </ng-container>
-    <button class="btn btn-primary" type="bouton" (click)="showMessages()">Voir les messages</button>
-    <div [hidden]="openMailer">
-    <ng-container  class="col-md-4 col-sm-12" *ngFor="let message of messages; let i = index">
-        <p>Message de : {{message.from}}</p>
-        <p>Objet : {{message.object}}</p>
-        <p>Message : {{message.body}}</p>
-        <button class="btn btn-danger btn-sm" type="bouton" (click)="deleteMessage(message.id, i)">Supprimer</button>
-      </ng-container>
-    </div>
   </div>
 </div>
+<button class="btn btn-warning showMessage" type="bouton" (click)="showMessages()">Voir les messages</button>
+    <div [hidden]="openMailer">
+<div class="row">
+    <ng-container  class="col-md-4 col-sm-12" *ngFor="let message of messages; let i = index">
+        <div class="card  mt-5 mb-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"> <u>Message de :</u> {{message.from}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted"><u>Objet :</u> {{message.object}}</h6>
+              <p class="card-text"> <u>Message :</u> {{message.body}}</p>
+            <button class="btn btn-danger del-message" type="bouton" (click)="deleteMessage(message.id, i)">Supprimer</button>
+            </div>
+          </div>
+      </ng-container>
+</div>
+  </div>
