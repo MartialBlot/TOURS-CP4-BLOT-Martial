@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink, Router } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router, ParamMap } from '@angular/router';
 import { Circus } from '../models/circus.model';
 import { CircusService } from '../services/circus.service';
 import { ToastrService } from 'ngx-toastr';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-circus',
@@ -11,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditCircusComponent implements OnInit {
 
-  public id: number;
   public circus;
 
   constructor(
@@ -22,11 +22,10 @@ export class EditCircusComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-      this.service.getOneCircus(this.id).subscribe((circus: Circus) => {
+    this.route.params.pipe(
+      switchMap((params: ParamMap) => this.service.getOneCircus(params['id']))
+    ).subscribe((circus: Circus )=> {
         this.circus = circus[0];
-      })
     })
 
   }

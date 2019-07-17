@@ -14,11 +14,8 @@ export class CircusService {
 
   public api = `${environment.apiUrl}`;
 
-  public getCircus(): Observable<Circus>{
-    return this.http.get(`${this.api}/circus`).pipe(
-      map((circus: any) => { return circus as Circus
-      })
-      )
+  public getCircus(): Observable<Circus[]>{
+    return this.http.get<Circus[]>(`${this.api}/circus`);
   };
 
   public deleteCircus(id: number): Observable<Circus> {

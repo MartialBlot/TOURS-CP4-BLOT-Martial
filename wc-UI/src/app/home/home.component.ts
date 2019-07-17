@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.service.getCircus().subscribe((circus: Circus) => {
+    this.service.getCircus().subscribe((circus: Circus[]) => {
       this.circus = circus;
     })
   }
