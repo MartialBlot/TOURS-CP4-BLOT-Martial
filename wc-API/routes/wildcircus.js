@@ -1,8 +1,8 @@
 const db = require('../db/db');
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const router = express.Router();
+const passport = require('passport');
 
 router.use(bodyParser.json());
 
@@ -87,7 +87,7 @@ router.get('/infos/:id', (req, res) =>{
 });
 
 //Post infos
-router.post('/infos', (req, res) => {
+router.post('/infos', passport.authenticate('jwtUrl', { session: false }), (req, res) => {
     const formData = req.body;
     db.query('INSERT INTO infos set ?', formData, (err, results) => {
         if(err){
@@ -138,7 +138,7 @@ router.get('/circus/:id/infos', (req, res) =>{
 });
 
 //Show all circus
-router.get('/circus' , (req, res) => {
+router.get('/circus', passport.authenticate('jwt', { session: false }), (req, res) => {
     db.query('SELECT * FROM circus', (err, results) => {
         if(err){
             res.status(500).json('Erreur lors de la récupération des cirques');
